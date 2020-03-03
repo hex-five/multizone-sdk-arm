@@ -7,6 +7,7 @@ MultiZone works with any Cortex-M0+, Cortex‑M3, Cortex‑M4, and Cortex‑M7 p
 
 This version of the GNU-based SDK supports the following development boards:
 
+- [GigaDevice GD32307C-EVAL evaluation kit (GD32F207 Cortex-M4 @120MHz)](https://www.gigadevice.com/products/microcontrollers/gd32-development-tools/gd32-evaluation-boards/)
 - [Microchip SMART SAM E70 Xplained evaluation kit (ATSAME70Q21 Cortex-M7 @300MHz)](http://www.microchip.com/developmenttools/productdetails/atsame70-xpld)
 - [NXP MIMXRT1020-EVK (i.MX RT1020 Cortex-M7 @500MHz)](https://www.nxp.com/design/development-boards/i.mx-evaluation-and-development-boards/i.mx-rt1020-evaluation-kit:MIMXRT1020-EVK) 
 - [Renesas EK-RA6M3 (R7FA6M3AH3CFC Cortex-M4 @120MHz)](https://www.renesas.com/us/en/products/software-tools/boards-and-kits/eval-kits/ek-ra6m3.html)
