@@ -10,9 +10,12 @@ tmp/
 *~.nib
 local.properties
 .settings/
-.vscode/*
 .loadpath
 .recommenders
+.vscode/
+
+# Build Folder
+build
 
 # External tool builders
 .externalToolBuilders/
