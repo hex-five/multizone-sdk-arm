@@ -22,7 +22,12 @@ else ifeq ($(BOARD),IMXRT1020)
    ARM_FPU := fpv5-d16	
 else ifeq ($(BOARD),EKRA6M3)
    ARM_ARCH := armv7e-m
-   ARM_CPU := cortex-m7
+   ARM_CPU := cortex-m4
+   ARM_FLOAT := soft
+   ARM_FPU := fpv5-sp-d16
+else ifeq ($(BOARD),GD32307)
+   ARM_ARCH := armv7e-m
+   ARM_CPU := cortex-m4
    ARM_FLOAT := soft
    ARM_FPU := fpv5-sp-d16
 else 
@@ -102,6 +107,9 @@ else ifeq ($(BOARD),EKRA6M3)
    OPENOCDCFG1 ?= bsp/$(BOARD)/jlink.cfg
    OPENOCDCFG2 ?= bsp/$(BOARD)/ra6m3.cfg
    OPENOCDARGS += -f $(OPENOCDCFG1) -f $(OPENOCDCFG2)
+else ifeq ($(BOARD),GD32307)
+   OPENOCDCFG1 ?= bsp/$(BOARD)/gdlink.cfg
+   OPENOCDARGS += -f $(OPENOCDCFG1)
 endif
 
 GDB_PORT ?= 3333
