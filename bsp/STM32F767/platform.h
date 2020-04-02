@@ -33,9 +33,9 @@
 #define BTN0_PIN                        (13U)
 #define BTN0_IRQn                       EXTI_IRQn
 
-#define SPI_TDI                         (5) 	                /*!< in 		    - PA5           */
-#define SPI_TCK                         (6)	                    /*!< out (master)   - PA6           */
-#define SPI_TDO                         (7)	                    /*!< out		    - PA7           */
+#define SPI_TDI                         (11) 	                /*!< in 	        - D5 (PE11) */
+#define SPI_TCK                         (14)	                /*!< out (master)   - D4 (PF14) */
+#define SPI_TDO                         (13)	                /*!< out	        - D3 (PE13)  */
 
 #define UART_RX_OFFSET                  (0x08)
 #define UART_TX_OFFSET                  (0x09)
@@ -68,6 +68,8 @@
 #define RCC_AHB1ENR_GPIOBEN         (0x00000002)
 #define RCC_AHB1ENR_GPIOCEN         (0x00000004)
 #define RCC_AHB1ENR_GPIODEN         (0x00000008)
+#define RCC_AHB1ENR_GPIOEEN         (0x00000010)
+#define RCC_AHB1ENR_GPIOFEN         (0x00000020)
 
 #define RCC_APB1ENR_USART3EN        (0x00040000)
 #define RCC_APB2ENR_SYSCFGEN        (0x00004000)
@@ -98,10 +100,14 @@
 #define GPIOB_BASE                  (AHB1PERIPH_BASE + 0x0400UL)
 #define GPIOC_BASE                  (AHB1PERIPH_BASE + 0x0800UL)
 #define GPIOD_BASE                  (AHB1PERIPH_BASE + 0x0C00UL)
+#define GPIOE_BASE                  (AHB1PERIPH_BASE + 0x1000UL)
+#define GPIOF_BASE                  (AHB1PERIPH_BASE + 0x1400UL)
 #define GPIOA_REG(offset)           _REG32(GPIOA_BASE, offset)
 #define GPIOB_REG(offset)           _REG32(GPIOB_BASE, offset)
 #define GPIOC_REG(offset)           _REG32(GPIOC_BASE, offset)
 #define GPIOD_REG(offset)           _REG32(GPIOD_BASE, offset)
+#define GPIOE_REG(offset)           _REG32(GPIOE_BASE, offset)
+#define GPIOF_REG(offset)           _REG32(GPIOF_BASE, offset)
 
 #define GPIO_MODER                  (0x00)                      /*!< GPIO port mode                         */
 #define GPIO_OTYPER                 (0x04)                      /*!< GPIO port output type                  */

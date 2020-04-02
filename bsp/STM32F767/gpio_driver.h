@@ -56,42 +56,44 @@
 #define SPI_INIT(_X_, _Y_, _Z_)                                                       		\
 {                                                                                     		\
 	/* Enable the GPIOA Clock*/                                                       		\
-	RCC_REG(RCC_AHB1ENR) |= RCC_AHB1ENR_GPIOAEN;                                      		\
+	RCC_REG(RCC_AHB1ENR) |= (RCC_AHB1ENR_GPIOEEN | RCC_AHB1ENR_GPIOFEN);                  	\
 	/* Configure the IO Output Type */                                                		\
-	GPIOA_REG(GPIO_MODER) &= ~((GPIO_MODER_MODER0 << (_Y_ * 2)) | 							\
-								(GPIO_MODER_MODER0 << (_Z_ * 2)));            				\
-	GPIOA_REG(GPIO_MODER) |= ((GPIO_MODE_OUTPUT) << (_Y_ * 2) | 							\
-								(GPIO_MODE_OUTPUT) << (_Z_ * 2));               			\
+	GPIOF_REG(GPIO_MODER) &= ~(GPIO_MODER_MODER0 << (_Y_ * 2));  							\
+	GPIOE_REG(GPIO_MODER) &= ~(GPIO_MODER_MODER0 << (_Z_ * 2));  							\
+	GPIOF_REG(GPIO_MODER) |= (GPIO_MODE_OUTPUT << (_Y_ * 2)); 								\
+	GPIOE_REG(GPIO_MODER) |= (GPIO_MODE_OUTPUT << (_Z_ * 2)); 								\
 	/* Configure the IO Speed */                                          					\
-	GPIOA_REG(GPIO_OSPEEDR) &= ~((GPIO_OSPEEDER_OSPEEDR0 << (_Y_ * 2)) | 					\
-								(GPIO_OSPEEDER_OSPEEDR0 << (_Z_ * 2)));    					\
-	GPIOA_REG(GPIO_OSPEEDR) |= ((GPIO_SPEED_FREQ_VERY_HIGH<< (_Y_ * 2)) | 					\
-								(GPIO_SPEED_FREQ_VERY_HIGH<< (_Z_ * 2))); 					\
+	GPIOF_REG(GPIO_OSPEEDR) &= ~(GPIO_OSPEEDER_OSPEEDR0 << (_Y_ * 2));						\
+	GPIOE_REG(GPIO_OSPEEDR) &= ~(GPIO_OSPEEDER_OSPEEDR0 << (_Z_ * 2));						\
+	GPIOF_REG(GPIO_OSPEEDR) |= (GPIO_SPEED_FREQ_VERY_HIGH << (_Y_ * 2)); 					\
+	GPIOE_REG(GPIO_OSPEEDR) |= (GPIO_SPEED_FREQ_VERY_HIGH << (_Z_ * 2)); 					\
 	/* Configure the IO Output Type */                                                 		\
-	GPIOA_REG(GPIO_OTYPER) &= ~((GPIO_OTYPER_OT_0 << _Y_) | (GPIO_OTYPER_OT_0 << _Z_)) ; 	\
-	GPIOA_REG(GPIO_OTYPER) |= ((((GPIO_MODE_OUTPUT & GPIO_OUTPUT_TYPE) >> 4) << _Y_) | 		\
-								(((GPIO_MODE_OUTPUT & GPIO_OUTPUT_TYPE) >> 4) << _Z_));  	\
+	GPIOF_REG(GPIO_OTYPER) &= ~(GPIO_OTYPER_OT_0 << _Y_); 									\
+	GPIOE_REG(GPIO_OTYPER) &= ~(GPIO_OTYPER_OT_0 << _Z_); 									\
+	GPIOF_REG(GPIO_OTYPER) |= (((GPIO_MODE_OUTPUT & GPIO_OUTPUT_TYPE) >> 4) << _Y_);		\
+	GPIOE_REG(GPIO_OTYPER) |= (((GPIO_MODE_OUTPUT & GPIO_OUTPUT_TYPE) >> 4) << _Z_);		\
 	/* Activate the Pull-up or Pull down resistor for the current IO */            			\
-	GPIOA_REG(GPIO_PUPDR) &= ~((GPIO_PUPDR_PUPDR0 << (_Y_ * 2)) |							\
-								(GPIO_PUPDR_PUPDR0 << (_Z_ * 2))); 	           				\
-    GPIOA_REG(GPIO_PUPDR) |= (((GPIO_NOPULL) << (_Y_ * 2)) | 								\
-								((GPIO_NOPULL) << (_Z_ * 2)));                     			\
-	GPIOA_REG(GPIO_BSRR) |= ((0x1 << _Y_) | (0x1 << _Z_));                             		\
+	GPIOF_REG(GPIO_PUPDR) &= ~(GPIO_PUPDR_PUPDR0 << (_Y_ * 2));								\
+	GPIOE_REG(GPIO_PUPDR) &= ~(GPIO_PUPDR_PUPDR0 << (_Z_ * 2));								\
+    GPIOF_REG(GPIO_PUPDR) |= ((GPIO_NOPULL) << (_Y_ * 2));									\
+	GPIOE_REG(GPIO_PUPDR) |= ((GPIO_NOPULL) << (_Z_ * 2));									\
+	GPIOF_REG(GPIO_BSRR) |= (0x1 << _Y_);													\
+	GPIOE_REG(GPIO_BSRR) |= (0x1 << _Z_);													\
 	/* Configure port mode */                                         						\
-	GPIOA_REG(GPIO_MODER) &= ~(GPIO_MODER_MODER0 << (_X_ * 2));                 			\
+	GPIOE_REG(GPIO_MODER) &= ~(GPIO_MODER_MODER0 << (_X_ * 2));                 			\
 	/* Activate the Pull-up for the current IO */                               			\
-	GPIOA_REG(GPIO_PUPDR) &= ~(GPIO_PUPDR_PUPDR0 << (_X_ * 2));                   			\
-   	GPIOA_REG(GPIO_PUPDR) |= ((GPIO_PULLUP) << (_X_ * 2));                       			\
+	GPIOE_REG(GPIO_PUPDR) &= ~(GPIO_PUPDR_PUPDR0 << (_X_ * 2));                   			\
+   	GPIOE_REG(GPIO_PUPDR) |= ((GPIO_PULLUP) << (_X_ * 2));                       			\
 }
 
-#define SPI_TDO_SET(_X_)	GPIOA_REG(GPIO_ODR) |= (0x1 << _X_) 
+#define SPI_TDO_SET(_X_)	GPIOE_REG(GPIO_ODR) |= (0x1 << _X_) 
 
-#define SPI_TDO_CLR(_X_)	GPIOA_REG(GPIO_ODR) &= ~(0x1 << _X_)
+#define SPI_TDO_CLR(_X_)	GPIOE_REG(GPIO_ODR) &= ~(0x1 << _X_)
 
-#define SPI_TDI_BIT(_X_)	(GPIOA_REG(GPIO_IDR) >> _X_) & 1U
+#define SPI_TDI_BIT(_X_)	(GPIOE_REG(GPIO_IDR) >> _X_) & 1U
 
-#define SPI_TCK_LOW(_X_)	GPIOA_REG(GPIO_ODR) |= (0x1 << _X_)
-#define SPI_TCK_HIGH(_X_)	GPIOA_REG(GPIO_ODR) ^= (0x1 << _X_)
+#define SPI_TCK_LOW(_X_)	GPIOF_REG(GPIO_ODR) |= (0x1 << _X_)
+#define SPI_TCK_HIGH(_X_)	GPIOF_REG(GPIO_ODR) ^= (0x1 << _X_)
 
 #define UART_IRQ_CLR()																		\
 {																							\
