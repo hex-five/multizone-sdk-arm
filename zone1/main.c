@@ -124,8 +124,8 @@ void print_cpu_info(void) {
 
 
 	/* SCB->CPUID Special register access (read-only) */
-	uint32_t cpuid = LOAD_SCB(SCS_SCB_CPUID);			// mzone api
-	//uint32_t cpuid = *(volatile uint32_t *)SCB_CPUID;	// trap&emul
+	//uint32_t cpuid = LOAD_SCB(SCS_SCB_CPUID);			// mzone api
+	uint32_t cpuid = *(volatile uint32_t *)SCB_CPUID;	// trap&emul
 
 	/* Decoding SCB->CPUID */
 	uint16_t partno = (cpuid&0xfff0)>>4;
