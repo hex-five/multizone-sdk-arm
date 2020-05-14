@@ -16,8 +16,6 @@
 .word __bss_start
 .word __bss_end
 
-# TODO - Consider to move the vector table definition to the bsp
-#        since the vector table is specific to the CPU/BOARD
 # -------------------------------------------------------------
 .section        .text.isr_vector
 .align 			2
@@ -41,10 +39,13 @@ __isr_vector:
         .word   pendsv_handler     	// PendSV_Handler
         .word   systick_handler    	// SysTick_Handler
         .rept   39                  // Repeat for 
-        .word   _def_handler        // IRQ0_Handler to IRQ39_Handler 
+        .word   _def_handler        // IRQ0_Handler to IRQ38_Handler 
         .endr
-		.word	uart_handler
-        .word   btn_handler
+		.word	uart_handler		// USART3_Handler
+        .word   btn_handler			// EXTI15_10_Handler
+		.rept   69                  // Repeat for 
+        .word   _def_handler        // IRQ41_Handler to IRQ109_Handler 
+        .endr
 	.size	__isr_vector, . - __isr_vector
 
 # -------------------------------------------------------------
