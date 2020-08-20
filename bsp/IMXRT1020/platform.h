@@ -29,9 +29,9 @@
 #define SW4_PIN                         (1<<SW4)
 #define SW4_IRQn                        (104)
 
-#define SPI_TDI                         (29)	                /*!< in 		    - J18(Pin4) = GPIO_AD_B13/GPIO1_IO29    */
-#define SPI_TCK                         (31)	                /*!< out (master)   - J18(Pin5) = GPIO_AD_B15/GPIO1_IO31    */
-#define SPI_TDO                         (30)	                /*!< out		    - J18(Pin6) = GPIO_AD_B14/GPIO1_IO30    */
+#define SPI_TDI                         (22)	                /*!< in 		    - J17(Pin8) = (D7) GPIO_AD_B1_06/GPIO1_IO22    */
+#define SPI_TCK                         (24)	                /*!< out (master)   - J17(Pin2) = (D1) GPIO_AD_B1_08/GPIO1_IO24    */
+#define SPI_TDO                         (25)	                /*!< out		    - J17(Pin1) = (D0) GPIO_AD_B1_09/GPIO1_IO25    */
 
 
 
