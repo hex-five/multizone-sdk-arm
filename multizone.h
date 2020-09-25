@@ -70,6 +70,16 @@
 			 (uint64_t)r5<<32|r6;													\
 			 })
 
+#define MZONE_WRTIME(cycles) ({                                                     \
+            asm volatile (                                                          \
+            "mov    r5, %0;"                                                        \
+            "mov    r6, %1;"                                                        \
+            "mov    r4, 0x14;"                                                      \
+            "svc    0x01;"                                                          \
+            :: "r"((uint32_t)cycles), "r"((uint32_t)((uint64_t)cycles>>32))         \
+            : "r4", "r5", "r6");                                                    \
+            })
+
 #define MZONE_RDTIMECMP() ({ register uint32_t r5 asm ("r5"), r6 asm ("r6");		\
 			 asm volatile ( 														\
 			 "mov	r4, 0x05;"														\
