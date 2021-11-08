@@ -156,10 +156,7 @@ Z1>
 
 Please remember that export/import and/or use of strong cryptography software, providing cryptography hooks, or even just communicating technical details about cryptography software is illegal in some parts of the world. So when you import this software to your country, re-distribute it from there or even just email technical suggestions or even source patches to the authors or other people you are strongly advised to pay close attention to any laws or regulations which apply to you. Hex Five Security, Inc. and the authors of the software included in this repository are not liable for any violations you make here. So be careful, it is your responsibility.
 
-MultiZone is a registered trademark of Hex Five Security, Inc.
-
-MultiZone is patent pending US 16450826, PCT US1938774.
 
 Arm, Cortex, and TrustZone are registered trademarks of Arm Limited.
-
-
+MultiZone is a registered trademark of Hex Five Security, Inc.
+MultiZone technology is protected by patents US 16450826 and PCT US1938774.
