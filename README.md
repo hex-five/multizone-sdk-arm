@@ -126,6 +126,17 @@ Commands: yield send recv mpu load store exec stats timer restart
 Z1>
 ```
 
+### Optional: Eclipse CDT Project ###
+This repository includes an optional Eclipse CDT project for developers familiar with this IDE. No additional plugins are required to build and upload MultiZone to the target. The [OpenOCD debugging plug-in](https://eclipse-embed-cdt.github.io/debug/openocd) is optional and recommended.
+
+**Eclipse project Setup**
+
+File > Open Projects from File System > Import source: ~/multizone-sdk-arm
+
+Project > Properties > C/C++ Build > Environment: set GNU_ARM and OPENOCD variables according to your installation
+
+![alt text](https://hex-five.com/wp-content/uploads/multizone-eclipse-proj.png)
+
 
 ### Technical Specs ###
 | |
