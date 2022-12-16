@@ -78,7 +78,7 @@ unzip master.zip
 
 Connect the target board to the development machine as indicated in its user manual.
 
-'ls bsp' shows the list of supported targets: ATSAME70  EKRA6M3  IMXRT1020  STM32F767.
+'ls bsp' shows the list of supported targets: ATSAME70  EKRA6M3  GD32307 IMXRT1020  STM32F767.
 
 Assign one of these values to the BOARD variable - default is STM32F767.
 
