@@ -1,4 +1,4 @@
-# Copyright(C) 2020 Hex Five Security, Inc. - All Rights Reserved
+# Copyright(C) 2023 Hex Five Security, Inc. - All Rights Reserved
 
 TARGET		:= boot
 
@@ -13,7 +13,7 @@ CFLAGS += -ffunction-sections -fdata-sections -fomit-frame-pointer
 CFLAGS += -O0
 CFLAGS += -Wall
 
-LDFLAGS	+= -T ../memory.lds -T ./linker.ld
+LDFLAGS	+= -T ../../$(BOARD)/memory.lds -T linker.ld
 LDFLAGS	+= -nostartfiles -nodefaultlibs -nostdlib
 LDFLAGS += -Xlinker --gc-sections
 LDFLAGS += -Wl,-Map,$(TARGET).map
