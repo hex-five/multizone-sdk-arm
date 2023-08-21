@@ -66,18 +66,21 @@ export LD      := $(CROSS_COMPILE)gcc
 
 .PHONY: all 
 all: clean
+	$(MAKE) -C bsp/$(BOARD)/boot
 	$(MAKE) -C zone1
 	$(MAKE) -C zone2
 	$(MAKE) -C zone3
 	java -jar multizone.jar \
-	-a $(BOARD) \
-	-c bsp/$(BOARD)/multizone.cfg \
+	--arch $(BOARD) \
+	--config bsp/$(BOARD)/multizone.cfg \
+	--boot bsp/$(BOARD)/boot/boot.hex \
 	zone1/zone1.elf \
 	zone2/zone2.elf \
 	zone3/zone3.elf 
 
 .PHONY: clean
 clean: 
+	$(MAKE) -C bsp/$(BOARD)/boot clean
 	$(MAKE) -C zone1 clean
 	$(MAKE) -C zone2 clean
 	$(MAKE) -C zone3 clean
